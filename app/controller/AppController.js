@@ -40,7 +40,7 @@ Ext.define('App.controller.AppController', {
         var topicData = [];
         me.keywords = {};
         me.selectedTopic = -1;
-        me.keywordCount = 5;
+        me.keywordCount = 3;
         
         store.getProxy().on({
             'exception': function(proxy, response, operation){
@@ -95,6 +95,7 @@ Ext.define('App.controller.AppController', {
                             name : 'keywords',
                             title: 'Stichworte',
                             data : [
+                                {text: '3', value: 3},
                                 {text: '5', value: 5},
                                 {text: '10', value: 10},
                                 {text: '15', value: 15},
@@ -162,7 +163,9 @@ Ext.define('App.controller.AppController', {
                 keyword: keyword
             });
         });
-        me.getKeywordStore().loadData(data);
+        var store = me.getKeywordStore();
+        store.loadData(data);
+        store.sort('keyword', 'ASC');
         Ext.getCmp('main-list').refresh();
 	},
     
