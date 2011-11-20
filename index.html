@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+
+    <title dir="ltr">Timelapse Calculator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    
+    <!-- iPad - landscape (748x1024) -->
+    <link rel="apple-touch-startup-image" href="images/ipad-landscape.png"  media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)"/>
+    <!-- iPad - portrait (768x1004) -->  
+    <link rel="apple-touch-startup-image" href="images/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"/>
+    <!-- iPhone - (320x460) -->
+    <link rel="apple-touch-startup-image" href="res/images/phone_startup.png" media="screen and (min-device-width: 200px) and (max-device-width: 320) and (orientation:portrait)"/>
+
+    <link rel="apple-touch-icon-precomposed" href="res/images/apple-touch-icon.png"/>
+    <link rel="stylesheet" media="screen" href="res/css/application.css?1"/>
+    <link rel="stylesheet" media="screen" href="res/css/custom.css?1"/>
+    
+    <!-- We include this last so that it doesn't block initial rendering of the page -->
+    <!--script src="http://maps.google.com/maps/api/js?sensor=true"></script-->
+    <script src="lib/sencha-touch/sencha-touch-all-debug-w-comments.js"></script>
+    <script src="app/app.js"></script>
+    <!--script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('deviceready', App.mainLaunch, false);
+    </script-->
+</head>
+<body>
+    <!-- hack so window opening works on all devices: http://www.sencha.com/forum/showthread.php?130358-window.open()-from-toolbar-button-opens-window-from-list-item-a-new-tab&p=639938#post639938 -->
+	<a href="" target="_blank" id="linker" style="display:none;"></a>
+</body>
+</html>
