@@ -162,7 +162,9 @@ Ext.define('App.controller.AppController', {
                 keyword: keyword
             });
         });
-        me.getKeywordStore().loadData(data);
+        var store = me.getKeywordStore();
+        store.loadData(data);
+        store.sort('keyword', 'ASC');
         Ext.getCmp('main-list').refresh();
 	},
     
