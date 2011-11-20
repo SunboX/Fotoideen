@@ -25,6 +25,12 @@ Ext.define('App.view.Main', {
                 xtype: 'list',
                 id: 'main-list',
                 store: 'Keyword',
+                /*
+                selectionModel: {
+                    mode: 'MULTI'
+                },
+                */
+                allowDeselect: true,
                 itemTpl: '{keyword}'
             }
         ]
