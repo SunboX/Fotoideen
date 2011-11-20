@@ -10,34 +10,140 @@ Ext.define('App.controller.AppController', {
     },
     
     views: [
-        'Calculator'
+        'Main'
     ],
     
     stores: [
-        
+        'Spreadsheet',
+        'Keyword'
     ],
     
     refs: [
         {
-            ref       : 'calculator',
-            selector  : 'calculator',
-            xtype     : 'calculator',
+            ref       : 'main',
+            selector  : 'main',
+            xtype     : 'main',
+            autoCreate: true
+        },
+        {
+            ref       : 'keywordList',
+            selector  : 'main > list',
             autoCreate: true
         }
     ],
 
     init: function() {
-        this.getCalculatorView().create().show();
+        var me = this;
+        
+        me.getMainView().create().show();
+        var store = me.getSpreadsheetStore();
+        var topicData = [];
+        me.keywords = {};
+        me.selectedTopic = -1;
+        me.keywordCount = 5;
+        
+        store.getProxy().on({
+            'exception': function(proxy, response, operation){
+                /*
+                if(response.message)
+                    alert(response.message + ' [Fehler: ' + response.state + ']');
+                else
+                    alert('Fehler: ' + response.state);
+                */
+            }
+        });
+        var loaded = false;
+        store.on({
+            load: function(store, records, options){
+                if(loaded) return;
+                loaded = true;
+                Ext.Array.each(records[0].get('rows'), function(row, i){
+                    var currentKeyword = '';
+                    Ext.Array.each(row.c, function(col, j){
+                        if(i === 0 && j > 0){ // Topics
+                            if(me.selectedTopic === -1)
+                                me.selectedTopic = j;
+                                
+                            topicData.push({
+                                text: col.v,
+                                value: j
+                            });
+                            
+                            me.keywords[j] = [];
+                        } else {
+                            if(j === 0){ // Keyword
+                                currentKeyword = col.v;
+                            } else if(col.v.toLowerCase() === 'x') {
+                                me.keywords[j].push(currentKeyword);
+                            }
+                        }
+                    });
+                });
+                
+                me.refresList();
+                
+                me.picker = Ext.create('Ext.Picker', {
+                    cancelButton: false,//'Abbrechen',
+                    doneButton: 'Fertig',
+                    slots: [
+                        {
+                            name : 'topic',
+                            title: 'Bereich',
+                            data : topicData
+                        },
+                        {
+                            name : 'keywords',
+                            title: 'Stichworte',
+                            data : [
+                                {text: '5', value: 5},
+                                {text: '10', value: 10},
+                                {text: '15', value: 15},
+                                {text: '20', value: 20},
+                                {text: '30', value: 30},
+                                {text: '40', value: 40}
+                            ]
+                        }
+                    ]
+                });
+                me.picker.on({
+                    pick: function(picker, obj, slot, opts){
+                        me.selectedTopic = obj.topic;
+                        me.keywordCount = obj.keywords;
+                        me.refresList();
+                    },
+                    show: function(picker, opts){
+                        me.selectedTopicTmp = me.selectedTopic;
+                        me.keywordCountTmp = me.keywordCount;
+                    },
+                    hide: function(picker, opts){
+                        delete me.selectedTopicTmp;
+                        delete me.keywordCountTmp;
+                    },
+                    cancel: function(picker, opts){
+                        me.selectedTopic = me.selectedTopicTmp;
+                        me.keywordCount = me.keywordCountTmp;
+                        //picker.items.items[0].setSelectedNode(1);
+                        me.refresList();
+                    }
+                });
+                me.picker.show();
+            }
+        });
+        
+        store.load();
         
         this.control({
-            'calculator': {
-                select: this.onMainMenuListTap,
-                pick: this.onLanguageSelected,
-                tap: this.backToMainMenu
+            '#show-picker-btn': {
+                tap: me.showPicker
             }
         });
     },
+    
+    showPicker: function(){
+        this.picker.show();
+    },
 
+    /*
 	onLaunch: function() {
 		//console.log('onLaunch app controller');
 		
@@ -46,167 +152,29 @@ Ext.define('App.controller.AppController', {
             load: this.onMainMenuLoad  
         });
     },
-	
-	onMainMenuLoad: function() {
-        //console.log('onMainMenuLoad app controller');
-        // get a reference to the view component
-        //var mainMenu = this.getMainMenu();
-        // do something
-    },
+	*/
+	refresList: function(){
+        var me = this;
+        var keywords = me.arrayShuffle(me.keywords[me.selectedTopic]).slice(0, me.keywordCount);
+        var data = [];
+        Ext.Array.each(keywords, function(keyword){
+            data.push({
+                keyword: keyword
+            });
+        });
+        me.getKeywordStore().loadData(data);
+        Ext.getCmp('main-list').refresh();
+	},
     
-	backToMainMenu: function() {
-        var main = this.getMain();
-        
-        this.getMainMenuList().deselectAll();
-
-        main.getLayout().getAnimation().setReverse(true);
-        main.setActiveItem(this.getMainMenu());
-    },
-
-    onMainMenuListTap: function(theList, record) {
-        var id = parseInt(record.get('id'));
-        this.getMain().getLayout().getAnimation().setReverse(false);
-        
-        switch(id){
-            case 2: // SehenswÃ¼rdigkeiten
-                if (!this.getPoi()) {
-                    this.getPoiView().create();
-                }
-                this.getMain().setActiveItem(this.getPoi());
-                break;
-            
-            default:
-                if (!this.getBlank()) {
-                    this.getBlankView().create();
-                }
-                this.getMain().setActiveItem(this.getBlank());
-                
+    arrayShuffle: function(array){
+        var tmp, rand;
+        for(var i =0; i < array.length; i++){
+            rand = Math.floor(Math.random() * array.length);
+            tmp = array[i]; 
+            array[i] = array[rand]; 
+            array[rand] = tmp;
         }
-        
-        /*
-        if (this.getProfile() == "phone") {
-            view.setWidth(null);
-            view.setHeight('85%');
-            view.setTop(null);
-            view.setLeft(0);
-        }
-        */
-    },
-
-    onSelectLangTap: function(btn) {
-        this.getSelectLang().show();
-    },
-
-    onLanguageSelected: function(picker, item, slot, options) {
-        this.currentLanguage = item.lang;
-        Ext.getCmp('selectLangBtn').setHtml('<div class="lang-icon lang-' + item.lang + '"></div>');
-        picker.hide();
-    },
-    
-    calcRealTime: function(shots, interval){
-        if(interval > 0){
-            var totalRealSeconds = shots * interval;
-            var totalRealMinutes = totalRealSeconds / 60;
-            var totalRealHours = totalRealMinutes / 60;
-            var totalRealDays = totalRealHours / 24;
-            var totalRealHoursRemainder = totalRealHours % 24;
-            var totalRealMinutesRemainder = totalRealMinutes % 60;
-            var totalRealSecondsRemainder = totalRealSeconds % 60;
-                
-            App.selectShootingDuration.setValue({
-                day: Math.floor(totalRealDays),
-                hour: Math.floor(totalRealHoursRemainder),
-                minute: Math.floor(totalRealMinutesRemainder),
-                second: Math.round(totalRealSecondsRemainder)
-            }, false);
-        }
-    },
-    
-    calcPlaybackTime: function(shots, fps){
-        if(fps > 0){
-            var totalPlaybackSeconds = shots / fps;
-            var totalPlaybackMinutes = totalPlaybackSeconds / 60;
-            var totalPlaybackHours = totalPlaybackMinutes / 60;
-            var totalPlaybackMinutesRemainder = totalPlaybackMinutes % 60;
-            var totalPlaybackSecondsRemainder = totalPlaybackSeconds % 60;
-            
-            App.selectPlaybackDuration.setValue({
-                hour: Math.floor(totalPlaybackHours),
-                minute: Math.floor(totalPlaybackMinutesRemainder),
-                second: Math.round(totalPlaybackSecondsRemainder)
-            }, false);
-        }
-    },
-    
-    playbackCentric: function(hrs, mins, secs, interval, fps){
-        var shots = (hrs * (60 * 60 * fps)) + (mins * (60*fps)) + (secs * fps);
-        App.calcRealTime(shots, interval);
-        App.selectShots.setValue(Math.round(shots), false);
-    },
-
-    shootCentric: function(days, hrs, mins, secs, interval, fps){
-        var seconds = (days * 24 * 60 * 60) + (hrs * 60 * 60) + (mins * 60) + secs;
-        var shots = seconds / interval;
-        App.calcPlaybackTime(shots, fps);
-        App.selectShots.setValue(Math.round(shots), false);
-    },
-    
-    updateSettings: function(interval, shots, fps){
-        if(interval > 0 && fps > 0){
-            App.calcRealTime(shots, interval);
-            App.calcPlaybackTime(shots, fps);
-        }
-        if(fps < 1){
-            App.selectPlaybackDuration.setValue({
-                hour: 0,
-                minute: 0,
-                second: 0
-            }, false);
-        }               
-        if(interval < 1 || fps < 1){
-            App.selectShootingDuration.setValue({
-                day: 0,
-                hour: 0,
-                minute: 0,
-                second: 0
-            }, false);
-        }
-    },
-    
-    updatePlayback: function(hours, minutes, seconds, interval, fps){
-        if(fps > 0){
-            App.playbackCentric(hours, minutes, seconds, interval, fps);
-        } else {
-            App.selectPlaybackDuration.setValue({
-                hour: 0,
-                minute: 0,
-                second: 0
-            }, false);
-            // Info Box
-            //self.informationMessage(DemoImpl.PLAYBACK_MESSAGE, DemoImpl.PLAYBACK_DURATION_LABEL)
-        }
-    },
-    
-    updateShoot: function(days, hours, minutes, seconds, interval, fps){
-        if(interval > 0){
-            App.shootCentric(days, hours, minutes, seconds, interval, fps);
-        } else {
-            App.selectShootingDuration.setValue({
-                day: 0,
-                hour: 0,
-                minute: 0,
-                second: 0
-            }, false);
-            // Info Box
-            //self.informationMessage(DemoImpl.SHOOTING_MESSAGE, DemoImpl.SHOOTING_DURATION_LABEL)
-        }
-    },
-    
-    reset: function(){
-        App.selectInterval.setValue(10);
-        App.selectShots.setValue(1000);
-        App.selectFps.setValue(24);
-        App.updateSettings(10, 1000, 24);
+        return array;
     }
 });
 
