@@ -15,7 +15,8 @@ Ext.define('App.controller.AppController', {
     
     stores: [
         'Spreadsheet',
-        'Keyword'
+        'Keyword',
+        'CurrentList'
     ],
     
     refs: [
@@ -31,17 +32,35 @@ Ext.define('App.controller.AppController', {
             autoCreate: true
         }
     ],
+    
+    firstRun: true,
+    keywords: {},
+    selectedTopic: -1,
+    keywordCount: 3,
 
     init: function() {
         var me = this;
         
         me.getMainView().create().show();
-        var store = me.getSpreadsheetStore();
         var topicData = [];
-        me.keywords = {};
-        me.selectedTopic = -1;
-        me.keywordCount = 3;
         
+        var store = me.getCurrentListStore();
+        store.load(); // aktuelle Liste aus DB laden
+        if(store.getCount() > 0){
+            me.firstRun = false;
+            var data = [];
+            store.each(function(record){
+                data.push({
+                    keyword: record.get('keyword')
+                });
+            });
+            store = me.getKeywordStore();
+            store.loadData(data);
+            store.sort('keyword', 'ASC');
+            Ext.getCmp('main-list').refresh();
+        }
+        
+        store = me.getSpreadsheetStore();
         store.getProxy().on({
             'exception': function(proxy, response, operation){
                 /*
@@ -80,7 +99,8 @@ Ext.define('App.controller.AppController', {
                     });
                 });
                 
-                me.refresList();
+                if(me.firstRun)
+                    me.refresList();
                 
                 me.picker = Ext.create('Ext.Picker', {
                     cancelButton: false,//'Abbrechen',
@@ -127,7 +147,9 @@ Ext.define('App.controller.AppController', {
                         me.refresList();
                     }
                 });
-                me.picker.show();
+                
+                if(me.firstRun)
+                    me.picker.show();
             }
         });
         
@@ -158,12 +180,17 @@ Ext.define('App.controller.AppController', {
         var me = this;
         var keywords = me.arrayShuffle(me.keywords[me.selectedTopic]).slice(0, me.keywordCount);
         var data = [];
+        var store = me.getCurrentListStore();
+        store.removeAll(); // Doesn´t work -> use getProxy().clear()
+        store.getProxy().clear();
         Ext.Array.each(keywords, function(keyword){
             data.push({
                 keyword: keyword
             });
+            store.add({keyword: keyword});
         });
-        var store = me.getKeywordStore();
+        store.sync(); // aktuelle Liste zwischenspeichern (dauerhaft)
+        store = me.getKeywordStore();
         store.loadData(data);
         store.sort('keyword', 'ASC');
         Ext.getCmp('main-list').refresh();
