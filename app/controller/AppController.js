@@ -56,7 +56,7 @@ Ext.define('App.controller.AppController', {
             });
             store = me.getKeywordStore();
             store.loadData(data);
-            store.sort('keyword', 'ASC');
+            //store.sort('keyword', 'ASC');
             Ext.getCmp('main-list').refresh();
         }
         
