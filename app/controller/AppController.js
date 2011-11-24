@@ -1,5 +1,4 @@
 
-  
 Ext.define('App.controller.AppController', {
     
     extend: 'Ext.app.Controller',
@@ -200,17 +199,7 @@ Ext.define('App.controller.AppController', {
     showPicker: function(){
         this.picker.show();
     },
-
-    /*
-	onLaunch: function() {
-		//console.log('onLaunch app controller');
-		
-        this.getMainMenuStore().on({
-            scope: this,
-            load: this.onMainMenuLoad  
-        });
-    },
-	*/
+    
 	refresList: function(){
         var me = this;
         var keywords = me.arrayShuffle(me.keywords[me.selectedTopic]).slice(0, me.keywordCount);
