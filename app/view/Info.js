@@ -3,11 +3,14 @@ Ext.define('App.view.Info', {
     extend: 'Ext.Panel',
     xtype : 'info',
     
+    
     config: {
         layout: {
-            type: 'fit'
+            type: 'vbox',
+            pack: 'center',
+            align: 'center'
         },
-        fullscreen: true,
+        scroll: 'vertical',
         items: [
             {
                 xtype: 'navigationbar',
@@ -22,7 +25,21 @@ Ext.define('App.view.Info', {
                         id: 'back-btn'
                     }
                 ]
+            },
+            {
+                type: 'hbox',
+                pack: 'center',
+                align: 'center',
+                padding: 20,
+                items: [{
+                    xtype: 'panel',
+                    html: 'Diese App soll dir dabei helfen neue Sichtweisen zu entwickeln und über Kreatifitätslöcher hinweg helfen.<br/>' +
+                          'Versuche dazu jedes Stichwort fotografisch umzusetzen (einfach). Wenn du es etwas schwieriger magst, kannst du auch versuchen alle Stichworte mit einem Foto zu verwirklichen.<br/><br/>' +
+                          'Die Kategorien und Stichworte können von jedem (auch dir! ;o)) erweitert und/oder verbessert werden. Du findest die entsprechende Excel-Tabelle hier:<br/>' +
+                          '<a href="https://docs.google.com/spreadsheet/ccc?key=0AqSNciwmshHBdDU3d1JOeDV4RXh3TXdjMTNIUDczalE&hl=de" target="_blank">➛ Öffentlich Excel-Tabelle bei Google Texte &amp; Tabellen</a><br/><br/>' +
+                          'Alle Änderungen in dieser Tabelle werden nach einem Neustart dieser App sichtbar.'
+                }]
             }
         ]
-    }
+	}
 });
