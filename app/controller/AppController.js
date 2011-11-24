@@ -174,6 +174,9 @@ Ext.define('App.controller.AppController', {
             },
             '#show-info-btn': {
                 tap: this.showInfo
+            },
+            '#open-google-spreadsheet': {
+                tap: this.openGoogleSpreadsheet
             }
         });
     },
@@ -188,6 +191,10 @@ Ext.define('App.controller.AppController', {
         var main = this.getMain();
         main.getLayout().getAnimation().setReverse(false);
         main.setActiveItem(this.getInfo());
+    },
+    
+    openGoogleSpreadsheet: function(){
+        window.open('https://docs.google.com/spreadsheet/ccc?key=0AqSNciwmshHBdDU3d1JOeDV4RXh3TXdjMTNIUDczalE&hl=de');
     },
     
     showPicker: function(){
