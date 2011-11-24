@@ -10,7 +10,9 @@ Ext.define('App.controller.AppController', {
     },
     
     views: [
-        'Main'
+        'Main',
+        'Keywords',
+        'Info'
     ],
     
     stores: [
@@ -30,6 +32,14 @@ Ext.define('App.controller.AppController', {
             ref       : 'keywordList',
             selector  : 'main > list',
             autoCreate: true
+        },
+        {
+            ref       : 'keywords',
+            selector  : 'keywords'
+        },
+        {
+            ref       : 'info',
+            selector  : 'info'
         }
     ],
     
@@ -158,8 +168,26 @@ Ext.define('App.controller.AppController', {
         this.control({
             '#show-picker-btn': {
                 tap: me.showPicker
+            },
+            '#back-btn': {
+                tap: this.backToKeywords
+            },
+            '#show-info-btn': {
+                tap: this.showInfo
             }
         });
+    },
+    
+    backToKeywords: function(){
+        var main = this.getMain();
+        main.getLayout().getAnimation().setReverse(true);
+        main.setActiveItem(this.getKeywords());
+    },
+    
+    showInfo: function(){
+        var main = this.getMain();
+        main.getLayout().getAnimation().setReverse(false);
+        main.setActiveItem(this.getInfo());
     },
     
     showPicker: function(){
