@@ -1,5 +1,7 @@
 # Fotoideen
 
+![Icon](http://github.com/SunboX/Fotoideen/raw/master/res/images/icon-114.png)
+
 Fotoideen ist ein Begleiter für den Sonntagsausflug. Es soll dir helfen deine fotografischen Fähigkeiten zu verbessern.
 
 
