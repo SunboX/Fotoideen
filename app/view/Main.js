@@ -13,13 +13,14 @@ Ext.define('App.view.Main', {
                 title: 'Fotoideen',
                 docked: 'top',
                 items: [
+                    /*
                     {
                         xtype: 'button',
                         align: 'left',
                         iconCls: 'info_plain',
                         iconMask: true,
                         id: 'show-info-btn'
-                    },
+                    },*/
                     {
                         xtype: 'button',
                         align: 'right',
