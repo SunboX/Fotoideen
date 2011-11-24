@@ -15,6 +15,13 @@ Ext.define('App.view.Main', {
                 items: [
                     {
                         xtype: 'button',
+                        align: 'left',
+                        iconCls: 'info_plain',
+                        iconMask: true,
+                        id: 'show-info-btn'
+                    },
+                    {
+                        xtype: 'button',
                         align: 'right',
                         text: 'Neue Liste',
                         id: 'show-picker-btn'
