@@ -7,6 +7,7 @@ if(!!webappCache){
 
 Ext.Loader.setConfig({
     enabled: true,
+    disableCaching: false,
     paths: {
         'App': 'app'
     }
