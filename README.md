@@ -33,8 +33,8 @@ Eine Windows Phone 7 App ist ebenfalls in Planung. Dazu in kürze mehr an dieser
 
 Die Fotoideen App läuft aktuell auf:
 
-Mobile: iPhone/iPad mit iOS 5, Android, Blackberry 6
-Desktop: Safari 5.0, Google Chrome Browser
+- Mobile: iPhone/iPad mit iOS 5, Android, Blackberry 6
+- Desktop: Safari 5.0, Google Chrome Browser
 
 ## Lizenz
 
