@@ -180,8 +180,10 @@ Ext.define('App.controller.AppController', {
         var store = me.getSpreadsheetStore();
         store.getProxy().on({
             'exception': function(proxy, response, operation){
-                mask.hide();
-                mask = null;
+                if(!!mask){
+                    mask.hide();
+                    mask = null;
+                }
                 /*
                 if(response.message)
                     alert(response.message + ' [Fehler: ' + response.state + ']');
