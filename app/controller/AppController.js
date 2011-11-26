@@ -115,6 +115,7 @@ Ext.define('App.controller.AppController', {
             }
             me.keywords[i].push(record.get('keyword'));
         });
+        topics = null;
         
         me.selectedTopic = topicData[0].value;
         me.keywordCount = 3;
@@ -174,10 +175,13 @@ Ext.define('App.controller.AppController', {
     
     fetchNewKeywords: function(){
         var me = this;
+        var mask = new Ext.LoadMask(Ext.getBody(), { msg: 'Stichworte werden aktualisiert ...'});
         var topicAndKeywordStore = me.getTopicAndKeywordStore();
         var store = me.getSpreadsheetStore();
         store.getProxy().on({
             'exception': function(proxy, response, operation){
+                mask.hide();
+                mask = null;
                 /*
                 if(response.message)
                     alert(response.message + ' [Fehler: ' + response.state + ']');
@@ -213,8 +217,11 @@ Ext.define('App.controller.AppController', {
                 });
                 topicAndKeywordStore.sync(); // aktuelle Liste zwischenspeichern (dauerhaft)
                 me.initPicker();
+                mask.hide();
+                mask = null;
             }
         });
+        mask.show();
         store.load();
     },
     

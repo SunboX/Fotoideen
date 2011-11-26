@@ -19,6 +19,22 @@ Fotoideen hilft dir mit einer Liste von Stichwörtern bei einem fotografischen K
 Dabei kannst du aus einer Liste von Themen wählen (Natur, Menschen, Urban, Sport, ...), und die Anzahl der Stichworte festlegen (3, 5, 10 ...).
 Fotoideen wird daraufhin eine Stichwortliste generieren. Deine Aufgabe ist es nun diese Stichworte fotografisch umzusetzen. Dabei kannst du versuchen alle Stichworte mit einem Bild festzuhalten (schwierig) oder zu jedem Stichwort ein einzelnes Bild zu gestalten.
 
+## Die App
+
+Die App findet ihr unter folgendem Link:
+http://sunbox.github.com/Fotoideen/
+
+
+Ihr könnt diese auch zum Homebildschirm hinzufügen (iPhone/Android). Sie verhält sich dann wie eine native Anwendung.
+
+Eine Windows Phone 7 App ist ebenfalls in Planung. Dazu in kürze mehr an dieser Stelle. ;o)
+
+## Unterstürtzte Betriebssysteme / Browser
+
+Die Fotoideen App läuft aktuell auf:
+
+Mobile: iPhone/iPad mit iOS 5, Android, Blackberry 6
+Desktop: Safari 5.0, Google Chrome Browser
 
 ## Lizenz
 
