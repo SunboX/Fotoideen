@@ -11,5 +11,5 @@ Ext.application({
     
     controllers: ['AppController'], 
     views: ['Main'],
-    models: ['Spreadsheet', 'Keyword', 'CurrentList']
+    models: ['Spreadsheet', 'Keyword', 'TopicAndKeyword', 'CurrentList']
 });
