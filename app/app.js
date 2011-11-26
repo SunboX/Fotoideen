@@ -1,3 +1,10 @@
+var webappCache = window.applicationCache;
+if(!!webappCache){
+    webappCache.addEventListener('updateready', function(){
+        webappCache.swapCache();
+    }, false);
+}
+
 Ext.Loader.setConfig({
     enabled: true,
     paths: {
