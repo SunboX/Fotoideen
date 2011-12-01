@@ -10,12 +10,21 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     
-    <!-- iPad - landscape (748x1024) -->
-    <link rel="apple-touch-startup-image" href="res/images/splash-1024x748.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)"/>
-    <!-- iPad - portrait (768x1004) -->  
-    <link rel="apple-touch-startup-image" href="res/images/splash-768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"/>
-    <!-- iPhone - (320x460) -->
-    <link rel="apple-touch-startup-image" href="res/images/splash-320x460.png" media="screen and (min-device-width: 200px) and (max-device-width: 320) and (orientation:portrait)"/>
+    <!-- For iPhone 4 with high-resolution Retina display: -->
+    <link rel="apple-touch-icon" sizes="114x114" href="res/images/icon-114.png"/>
+    <!-- For first-generation iPad: -->
+    <link rel="apple-touch-icon" sizes="72x72" href="res/images/icon-72.png"/>
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon" href="res/images/icon-57.png"/>
+    
+    <!-- 320x460 for iPhone 3GS -->
+    <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and not (-webkit-min-device-pixel-ratio: 2)" href="res/images/splash-320x460.png"/>
+    <!-- 640x920 for retina display -->
+    <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="res/images/splash-320x460.png"/>
+    <!-- iPad Portrait 768x1004 -->
+    <link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: portrait)" href="res/images/splash-768x1004.png"/>
+    <!-- iPad Landscape 1024x748 -->
+    <link rel="apple-touch-startup-image" media="(min-device-width: 768px) and (orientation: landscape)" href="res/images/splash-1024x748"/>
 
     <link rel="apple-touch-icon-precomposed" href="res/images/icon-114.png"/>
     <link rel="stylesheet" media="screen" href="res/css/application.css?1"/>
