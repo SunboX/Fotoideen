@@ -55,7 +55,7 @@ Ext.define('App.view.Info', {
         var panel = this.items.get(1);
         
         panel.getEl().on({
-            click: function(e){
+            tap: function(e){
                 e.stopEvent();
                 window.open('https://docs.google.com/spreadsheet/ccc?key=0AqSNciwmshHBdDU3d1JOeDV4RXh3TXdjMTNIUDczalE&hl=de');
             },
