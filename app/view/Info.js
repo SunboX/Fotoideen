@@ -55,9 +55,9 @@ Ext.define('App.view.Info', {
         var panel = this.items.get(1);
         
         panel.getEl().on({
-            tap: function(e){
+            click: function(e){
                 e.stopEvent();
-                window.open('https://docs.google.com/spreadsheet/ccc?key=0AqSNciwmshHBdDU3d1JOeDV4RXh3TXdjMTNIUDczalE&hl=de');
+                location.href = 'newtab:' + escape('https://docs.google.com/spreadsheet/ccc?key=0AqSNciwmshHBdDU3d1JOeDV4RXh3TXdjMTNIUDczalE&hl=de');
             },
             delegate: 'a.open-google-spreadsheet'
         });
