@@ -10,7 +10,7 @@ Leider ist dieses nur auf englisch erhältlich. Ich wollte eine einfache Anwendu
 
 
 Alle Stichworte werden direkt aus einer Excel-Tabelle ausgelesen. Diese liegt bei Google Texte & Tabellen und ist für jedermann änderbar.
-Wenn dir die App gefällt, bitte ich nicht um eine Spende ;o) sodern darum die Tabelle zu ergänzen/zu verbessern:
+Wenn dir die App gefällt, bitte ich nicht um eine Spende ;o) sondern darum die Tabelle zu ergänzen/zu verbessern:
 https://docs.google.com/spreadsheet/ccc?key=0AqSNciwmshHBdDU3d1JOeDV4RXh3TXdjMTNIUDczalE&hl=de#gid=0
 
 ## Wie funktioniert das?
