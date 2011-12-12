@@ -27,13 +27,13 @@ http://sunbox.github.com/Fotoideen/
 
 Ihr könnt diese auch zum Homebildschirm hinzufügen (iPhone/Android). Sie verhält sich dann wie eine native Anwendung.
 
-Eine Windows Phone 7 App ist ebenfalls in Planung. Dazu in kürze mehr an dieser Stelle. ;o)
+Windows Phone 7 findet Ihr hier: http://www.windowsphone.com/de-de/apps/4da6b5c7-73b4-48e0-9107-c43a446398b3
 
 ## Unterstürtzte Betriebssysteme / Browser
 
 Die Fotoideen App läuft aktuell auf:
 
-- **Mobile:** iPhone/iPad mit iOS 5, Android, Blackberry 6
+- **Mobile:** iPhone/iPad mit iOS 5, Android, Blackberry 6, Windows Phone 7
 - **Desktop:** Safari 5.0, Google Chrome Browser
 
 ## Lizenz
