@@ -27,7 +27,7 @@ http://sunbox.github.com/Fotoideen/
 
 Ihr könnt diese auch zum Homebildschirm hinzufügen (iPhone/Android). Sie verhält sich dann wie eine native Anwendung.
 
-Windows Phone 7 findet Ihr hier: http://www.windowsphone.com/de-de/apps/4da6b5c7-73b4-48e0-9107-c43a446398b3
+Für Windows Phone 7 findet Ihr die App hier: http://www.windowsphone.com/de-de/apps/4da6b5c7-73b4-48e0-9107-c43a446398b3
 
 ## Unterstürtzte Betriebssysteme / Browser
 
