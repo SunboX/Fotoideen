@@ -10,7 +10,7 @@ Leider ist dieses nur auf englisch erhältlich. Ich wollte eine einfache Anwendu
 
 
 Alle Stichworte werden direkt aus einer Excel-Tabelle ausgelesen. Diese liegt bei Google Texte & Tabellen und ist für jedermann änderbar.
-Wenn dir die App gefällt, bitte ich nicht um eine Spende ;o) sodern darum die Tabelle zu ergänzen/zu verbessern:
+Wenn dir die App gefällt, bitte ich nicht um eine Spende ;o) sondern darum die Tabelle zu ergänzen/zu verbessern:
 https://docs.google.com/spreadsheet/ccc?key=0AqSNciwmshHBdDU3d1JOeDV4RXh3TXdjMTNIUDczalE&hl=de#gid=0
 
 ## Wie funktioniert das?
@@ -27,13 +27,13 @@ http://sunbox.github.com/Fotoideen/
 
 Ihr könnt diese auch zum Homebildschirm hinzufügen (iPhone/Android). Sie verhält sich dann wie eine native Anwendung.
 
-Eine Windows Phone 7 App ist ebenfalls in Planung. Dazu in kürze mehr an dieser Stelle. ;o)
+Für Windows Phone 7 findet Ihr die App hier: http://www.windowsphone.com/de-de/apps/4da6b5c7-73b4-48e0-9107-c43a446398b3
 
 ## Unterstürtzte Betriebssysteme / Browser
 
 Die Fotoideen App läuft aktuell auf:
 
-- **Mobile:** iPhone/iPad mit iOS 5, Android, Blackberry 6
+- **Mobile:** iPhone/iPad mit iOS 5, Android, Blackberry 6, Windows Phone 7
 - **Desktop:** Safari 5.0, Google Chrome Browser
 
 ## Lizenz
