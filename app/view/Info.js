@@ -35,7 +35,7 @@ Ext.define('App.view.Info', {
                     html: 'Diese App soll dir dabei helfen neue Sichtweisen zu entwickeln und über Kreativitätslöcher hinweg helfen.<br/>' +
                           'Versuche dazu jedes Stichwort fotografisch umzusetzen (einfach). Wenn du es etwas schwieriger magst, kannst du auch versuchen alle Stichworte mit einem Foto zu verwirklichen.<br/><br/>' +
                           'Die Kategorien und Stichworte können von jedem (auch dir! ;o)) erweitert und/oder verbessert werden. Du findest die entsprechende Excel-Tabelle hier:<br/>' +
-                          '<a href="#" class="open-google-spreadsheet" target="_blank">➛ Öttp://goo.gl/U5ikE</a><br/><br/>' +
+                          '<a href="http://goo.gl/U5ikE" class="open-google-spreadsheet" target="_blank">➛ http://goo.gl/U5ikE</a><br/><br/>' +
                           'Alle Änderungen in dieser Tabelle werden nach einem Neustart dieser App sichtbar.'
                 }]
             }
