@@ -51,6 +51,7 @@ Ext.define('App.view.Info', {
     onPainted: function() {
         
         // get reference to the containing panel (tab)
+        /*
         var panel = this.items.get(1);
         
         panel.getEl().on({
@@ -60,5 +61,6 @@ Ext.define('App.view.Info', {
             },
             delegate: 'a.open-google-spreadsheet'
         });
+        */
     }
 });
